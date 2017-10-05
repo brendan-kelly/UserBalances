@@ -8,7 +8,7 @@ import java.util.UUID;
 @DatabaseTable(tableName = "users")
 public class User {
 
-    @DatabaseField(columnName = "id", id = true)
+    @DatabaseField(id = true)
     private UUID id;
     @DatabaseField(unique = true)
     private String email;
