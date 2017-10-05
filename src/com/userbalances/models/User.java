@@ -3,35 +3,42 @@ package com.userbalances.models;
 import com.j256.ormlite.table.DatabaseTable;
 import com.j256.ormlite.field.DatabaseField;
 
-@DatabaseTable(tableName = "users")
-public class Users {
+import java.util.UUID;
 
-    @DatabaseField(columnName = "id", generatedId = true, allowGeneratedIdInsert = true)
-    private int id;
+@DatabaseTable(tableName = "users")
+public class User {
+
+    @DatabaseField(columnName = "id", id = true)
+    private UUID id;
     @DatabaseField(unique = true)
     private String email;
     @DatabaseField
     private String password;
 
-    public Users() {
+    public User() {
         // ORMLite needs a no-arg constructor
     }
-    public Users(int id, String email, String password) {
-        this.id = id;
+
+    public User(String email, String password) {
+        this.id = UUID.randomUUID();
         this.email = email;
         this.password = password;
+    }
+
+    public UUID getId() {
+        return id;
     }
 
     public String getEmail() {
         return email;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
     public String getPassword() {
         return password;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public void setPassword(String password) {
